@@ -1,0 +1,44 @@
+.grid {
+    display: grid;
+    grid-template: repeat(6, 1fr)/repeat(4, 1fr);
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid black;
+    margin: -250px 0 0 -250px;
+}
+
+.grid div {
+    border: 1px solid black;
+}
+
+.functional {
+    background-color: lightgoldenrodyellow;
+}
+
+.number {
+    background-color: lightgrey;
+}
+
+.operand {
+    background-color: lightpink;
+}
+
+#display {
+    grid-column-end: span 4;
+}
+
+#plus {
+    grid-row-end: span 2;
+}
+
+#enter {
+    grid-row-end: span 2;
+}
+
+#zero {
+    grid-column-end: span 2;
+}
+
