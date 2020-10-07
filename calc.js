@@ -3,7 +3,12 @@ let input;
 let begin;
 let enterPressed;
 let operation;
+let oldTarget;
 let display = document.getElementById('display');
+let calculatorDiv = document.getElementById('calculator');
+let buttons = Array.from(calculatorDiv.getElementsByTagName('button'));
+
+
 
 function init() {
     result = "";
@@ -15,15 +20,24 @@ function init() {
 init();
 
 function addEventListenerToButtons() {
-    let calculatorDiv = document.getElementById('calculator');
-    Array.from(calculatorDiv.getElementsByTagName('button')).forEach(item => {
+    buttons.forEach(item => {
         item.addEventListener('click', event => buttonClicked(event.target));
-    })
+    });
+    window.addEventListener('keydown', (e) => {
+        buttons.forEach(button => {
+             if(button.innerHTML == e.key) button.click();
+        });
+    });
+    
 }
 
 addEventListenerToButtons();
 
 function buttonClicked(target) {
+    if(oldTarget){
+        oldTarget.classList.remove('clicked');
+        oldTarget = null;
+    }
     let targetClass = target.classList[0];
     let targetFunction = window[target.value];
 
@@ -43,6 +57,8 @@ function buttonClicked(target) {
             numberInput(target.innerHTML);
             break;
         case 'operand':
+            target.classList.add('clicked');
+            oldTarget = target;
             if(begin) {
                 result = input;
                 begin = false;

@@ -9,6 +9,10 @@ footer {
     right: 10px;
 }
 
+.clicked {
+    background-color: #ffb6c159 !important;
+}
+
 .grid {
     display: grid;
     grid-template: repeat(6, 1fr)/repeat(4, 1fr);
